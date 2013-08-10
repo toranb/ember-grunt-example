@@ -5,5 +5,23 @@
 </head>
 <body>
 
+<script src="js/lib/deps.min.js"></script>
+<script src="js/lib/tmpl.min.js"></script>
+
+<script src="js/vendor/jquery-mockjax/jquery.mockjax.js"></script>
+<script>
+
+var fake = [{firstName: "grunt", lastName: "cli"}, {firstName: "ember", lastName: "js"}];
+$.mockjaxSettings.logging = false;
+$.mockjaxSettings.responseTime = 0;
+$.mockjax({
+  url: '/api/people',
+  dataType: 'json',
+  responseText: fake
+});
+
+</script>
+
+
 </body>
 </html>
