@@ -3,13 +3,9 @@ module.exports = function(karma) {
         basePath: 'js',
 
         files: [
-          "vendor/jquery/jquery.min.js",
-          "vendor/handlebars/handlebars.js",
-          "vendor/ember/ember.js",
-          "vendor/jquery-mockjax/jquery.mockjax.js",
-          "app.js",
-          "tests/*.js",
-          "templates/*.handlebars"
+          "lib/deps.min.js",
+          "lib/tmpl.min.js",
+          "tests/*.js"
         ],
 
         logLevel: karma.LOG_ERROR,
@@ -17,17 +13,6 @@ module.exports = function(karma) {
         singleRun: true,
         autoWatch: false,
 
-        frameworks: ["qunit"],
-
-        plugins: [
-            'karma-qunit',
-            'karma-chrome-launcher',
-            'karma-ember-preprocessor',
-            'karma-phantomjs-launcher'
-        ],
-
-        preprocessors: {
-            "**/*.handlebars": 'ember'
-        }
+        frameworks: ["qunit"]
     });
 };

@@ -1,14 +1,29 @@
 module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
+  grunt.loadNpmTasks('grunt-karma');
 
   grunt.initConfig({
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
     concat: {
       dist: {
           src: [
             'js/vendor/jquery/jquery.min.js',
             'js/vendor/handlebars/handlebars.js',
             'js/vendor/ember/ember.min.js',
+            'js/app.js'],
+          dest: 'js/lib/deps.min.js'
+      },
+      test: {
+          src: [
+            'js/vendor/jquery/jquery.min.js',
+            'js/vendor/handlebars/handlebars.js',
+            'js/vendor/ember/ember.js',
+            'js/vendor/jquery-mockjax/jquery.mockjax.js',
             'js/app.js'],
           dest: 'js/lib/deps.min.js'
       }
@@ -28,4 +43,5 @@ module.exports = function(grunt) {
   });
 
   grunt.task.registerTask('default', ['concat:dist', 'emberhandlebars']);
+  grunt.task.registerTask('test', ['concat:test', 'emberhandlebars', 'karma']);
 }

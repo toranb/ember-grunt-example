@@ -15,7 +15,7 @@ To run the javascript tests
 
     npm install
     export PATH="./node_modules/.bin:$PATH"
-    karma start
+    grunt test
 
 
 Known issues: tests will not work with RC6 just yet
