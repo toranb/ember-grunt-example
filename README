@@ -1,1 +1,23 @@
-simple ember.js application using grunt to precompile assets
+A simple ember.js app using grunt for the client side build step
+
+
+To run the ember.js web app
+
+    npm install
+    export PATH="./node_modules/.bin:$PATH"
+    grunt
+    ./bin/server
+
+    visit http://localhost:3000 to see the running app
+
+
+To run the javascript tests
+
+    npm install
+    export PATH="./node_modules/.bin:$PATH"
+    karma start
+
+
+Known issues: tests will not work with RC6 just yet
+
+https://github.com/emberjs/ember.js/pull/3026
