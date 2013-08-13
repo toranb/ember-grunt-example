@@ -2,8 +2,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
   grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-hashres');
 
   grunt.initConfig({
+    hashres: {
+      options: {
+        renameFiles: true
+      },
+      prod: {
+        src: ['js/lib/deps.min.js'],
+        dest: 'index.html'
+      }
+    },
     karma: {
       unit: {
         configFile: 'karma.conf.js'
@@ -44,6 +54,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('default', ['emberhandlebars', 'concat:dist']);
+  grunt.task.registerTask('default', ['emberhandlebars', 'concat:dist', 'hashres']);
   grunt.task.registerTask('test', ['emberhandlebars', 'concat:test', 'karma']);
 }
