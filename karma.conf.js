@@ -4,7 +4,6 @@ module.exports = function(karma) {
 
         files: [
           "lib/deps.min.js",
-          "lib/tmpl.min.js",
           "tests/*.js"
         ],
 

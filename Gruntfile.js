@@ -15,7 +15,8 @@ module.exports = function(grunt) {
             'js/vendor/jquery/jquery.min.js',
             'js/vendor/handlebars/handlebars.js',
             'js/vendor/ember/ember.min.js',
-            'js/app.js'],
+            'js/app.js',
+            'js/lib/tmpl.min.js'],
           dest: 'js/lib/deps.min.js'
       },
       test: {
@@ -24,7 +25,8 @@ module.exports = function(grunt) {
             'js/vendor/handlebars/handlebars.js',
             'js/vendor/ember/ember.js',
             'js/vendor/jquery-mockjax/jquery.mockjax.js',
-            'js/app.js'],
+            'js/app.js',
+            'js/lib/tmpl.min.js'],
           dest: 'js/lib/deps.min.js'
       }
     },
@@ -42,6 +44,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('default', ['concat:dist', 'emberhandlebars']);
-  grunt.task.registerTask('test', ['concat:test', 'emberhandlebars', 'karma']);
+  grunt.task.registerTask('default', ['emberhandlebars', 'concat:dist']);
+  grunt.task.registerTask('test', ['emberhandlebars', 'concat:test', 'karma']);
 }
