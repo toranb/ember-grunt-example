@@ -3,8 +3,19 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-ember-template-compiler');
   grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-hashres');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
+    watch: {
+      scripts: {
+        files: ['index.html', 'js/*.js', 'js/templates/*.handlebars'],
+        tasks: ['dev'],
+        options: {
+          interrupt: true,
+          debounceDelay: 250
+        }
+      }
+    },
     hashres: {
       options: {
         renameFiles: true
@@ -54,6 +65,8 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('default', ['emberhandlebars', 'concat:dist', 'hashres']);
+  grunt.task.registerTask('dev', ['emberhandlebars', 'concat:dist']);
+  grunt.task.registerTask('local', ['dev', 'watch']);
+  grunt.task.registerTask('deploy', ['emberhandlebars', 'concat:dist', 'hashres']);
   grunt.task.registerTask('test', ['emberhandlebars', 'concat:test', 'karma']);
 }
