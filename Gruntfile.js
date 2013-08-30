@@ -35,7 +35,7 @@ module.exports = function(grunt) {
           src: [
             'js/vendor/jquery/jquery.min.js',
             'js/vendor/handlebars/handlebars.js',
-            'js/vendor/ember/ember.min.js',
+            'js/vendor/ember/ember.js',
             'js/app.js',
             'js/lib/tmpl.min.js'],
           dest: 'js/lib/deps.min.js'

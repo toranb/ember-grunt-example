@@ -1,7 +1,5 @@
 document.write('<div id="ember-testing-container"><div id="ember-testing"></div></div>');
 
-Ember.testing = true;
-
 App.rootElement = '#ember-testing';
 App.setupForTesting();
 App.injectTestHelpers();
@@ -12,7 +10,8 @@ function exists(selector) {
 
 function missing(selector) {
     var error = "element " + selector + " found (should be missing)";
-    throws(function() { find(selector); }, error);
+    var element = find(selector).length;
+    equal(element, 0, error);
 }
 
 function stubEndpointForHttpRequest(url, json) {

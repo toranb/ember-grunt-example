@@ -5,7 +5,7 @@
     "grunt-contrib-concat": "*",
     "grunt-contrib-watch": "*",
     "grunt-hashres": "*",
-    "grunt-ember-template-compiler": "1.0.4",
+    "grunt-ember-template-compiler": "1.0.6",
     "karma-qunit": "*",
     "karma": "0.10.0",
     "bower": "*"
