@@ -2,7 +2,7 @@
   "name": "my-bower-configuration",
   "version": "0.0.1",
   "dependencies": {
-    "ember": "1.0.0-rc.8",
+    "ember": "1.0.0",
     "jquery-mockjax": "*"
   }
 }

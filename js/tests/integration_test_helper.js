@@ -4,10 +4,6 @@ App.rootElement = '#ember-testing';
 App.setupForTesting();
 App.injectTestHelpers();
 
-function exists(selector) {
-    return !!find(selector).length;
-}
-
 function missing(selector) {
     var error = "element " + selector + " found (should be missing)";
     var element = find(selector).length;

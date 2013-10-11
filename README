@@ -25,8 +25,3 @@ To deploy the ember.js application to a production server
     grunt deploy
 
     visit your production endpoint -the js file will be renamed on the fly
-
-
-Known issues: tests will not work with RC6 just yet
-
-https://github.com/emberjs/ember.js/pull/3026
