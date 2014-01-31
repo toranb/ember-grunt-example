@@ -37,7 +37,7 @@ test('another empty ajax response will yield another empty table', function() {
     });
 });
 
-test('ajax response with 1 person yields table with 1 row', function() {
+otest('ajax response with 1 person yields table with 1 row', function() {
     var matt = {firstName: 'matt', lastName: 'morrison'};
     stubEndpointForHttpRequest('/api/people', [matt]);
     Ember.run(App, 'advanceReadiness');
