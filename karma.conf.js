@@ -4,7 +4,9 @@ module.exports = function(karma) {
 
         files: [
           "lib/deps.min.js",
-          "tests/*.js"
+          "tests/karma/karma_qunit_helpers.js",
+          "tests/*.js",
+          "tests/karma/qunit_karma_launch.js"
         ],
 
         logLevel: karma.LOG_ERROR,
