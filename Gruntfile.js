@@ -1,12 +1,15 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-concat');
-  grunt.loadNpmTasks('grunt-ember-template-compiler');
   grunt.loadNpmTasks('grunt-karma');
-  grunt.loadNpmTasks('grunt-hashres');
-  grunt.loadNpmTasks('grunt-contrib-watch');
+  grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
+  grunt.loadNpmTasks('grunt-ember-template-compiler');
 
   grunt.initConfig({
+    karma: {
+      unit: {
+        configFile: 'karma.conf.js'
+      }
+    },
     transpile: {
       app: {
         type: 'amd',
@@ -19,30 +22,6 @@ module.exports = function(grunt) {
           src: '**/*.js',
           dest: 'js/dist/transpiled/'
         }]
-      }
-    },
-    watch: {
-      scripts: {
-        files: ['index.html', 'js/*.js', 'js/templates/*.handlebars'],
-        tasks: ['dev'],
-        options: {
-          interrupt: true,
-          debounceDelay: 250
-        }
-      }
-    },
-    hashres: {
-      options: {
-        renameFiles: true
-      },
-      prod: {
-        src: ['js/dist/deps.min.js'],
-        dest: 'index.html'
-      }
-    },
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
       }
     },
     concat: {
@@ -68,7 +47,7 @@ module.exports = function(grunt) {
             'vendor/ember-resolver.js',
             'js/dist/transpiled/**/*.js',
             'js/dist/tmpl.min.js',
-            'js/test/*.js',
+            'js/tests/*.js',
             'js/startup.js'],
           dest: 'js/dist/deps.min.js'
       }
@@ -87,8 +66,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('dev', ['transpile', 'emberhandlebars', 'concat:dist']);
-  grunt.task.registerTask('local', ['dev', 'watch']);
-  grunt.task.registerTask('deploy', ['transpile', 'emberhandlebars', 'concat:dist', 'hashres']);
+  grunt.task.registerTask('local', ['transpile', 'emberhandlebars', 'concat:dist']);
   grunt.task.registerTask('test', ['transpile', 'emberhandlebars', 'concat:test', 'karma']);
 }
