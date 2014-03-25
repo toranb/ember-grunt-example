@@ -54,7 +54,8 @@ module.exports = function(grunt) {
             'vendor/loader.js',
             'vendor/ember-resolver.js',
             'js/dist/transpiled/**/*.js',
-            'js/dist/tmpl.min.js'],
+            'js/dist/tmpl.min.js',
+            'js/startup.js'],
           dest: 'js/dist/deps.min.js'
       },
       test: {
@@ -66,7 +67,9 @@ module.exports = function(grunt) {
             'vendor/loader.js',
             'vendor/ember-resolver.js',
             'js/dist/transpiled/**/*.js',
-            'js/dist/tmpl.min.js'],
+            'js/dist/tmpl.min.js',
+            'js/test/*.js',
+            'js/startup.js'],
           dest: 'js/dist/deps.min.js'
       }
     },
@@ -86,6 +89,6 @@ module.exports = function(grunt) {
 
   grunt.task.registerTask('dev', ['transpile', 'emberhandlebars', 'concat:dist']);
   grunt.task.registerTask('local', ['dev', 'watch']);
-  grunt.task.registerTask('deploy', ['emberhandlebars', 'concat:dist', 'hashres']);
-  grunt.task.registerTask('test', ['emberhandlebars', 'concat:test', 'karma']);
+  grunt.task.registerTask('deploy', ['transpile', 'emberhandlebars', 'concat:dist', 'hashres']);
+  grunt.task.registerTask('test', ['transpile', 'emberhandlebars', 'concat:test', 'karma']);
 }
