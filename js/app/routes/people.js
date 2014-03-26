@@ -1,7 +1,9 @@
 import Person from 'js/models/person';
 
-export default Ember.Route.extend({
+var PeopleRoute = Ember.Route.extend({
     model: function() {
         return Person.find();
     }
 });
+
+export default PeopleRoute;

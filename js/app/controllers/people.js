@@ -1,6 +1,6 @@
 import Person from 'js/models/person';
 
-export default Ember.ArrayController.extend({
+var PeopleController = Ember.ArrayController.extend({
     actions: {
         addPerson: function() {
             var person = {
@@ -15,3 +15,4 @@ export default Ember.ArrayController.extend({
     }
 });
 
+export default PeopleController;
