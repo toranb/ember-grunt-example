@@ -11,6 +11,18 @@ module.exports = function(grunt) {
       }
     },
     transpile: {
+      tests: {
+        type: 'amd',
+        moduleName: function(path) {
+            return grunt.config.process('js/tests/') + path;
+        },
+        files: [{
+          expand: true,
+          cwd: 'js/tests/',
+          src: '**/*.js',
+          dest: 'js/dist/transpiled/tests/'
+        }]
+      },
       app: {
         type: 'amd',
         moduleName: function(path) {
@@ -20,7 +32,7 @@ module.exports = function(grunt) {
           expand: true,
           cwd: 'js/app/',
           src: '**/*.js',
-          dest: 'js/dist/transpiled/'
+          dest: 'js/dist/transpiled/app/'
         }]
       }
     },
@@ -32,9 +44,8 @@ module.exports = function(grunt) {
             'js/vendor/ember/ember.js',
             'vendor/loader.js',
             'vendor/ember-resolver.js',
-            'js/dist/transpiled/**/*.js',
-            'js/dist/tmpl.min.js',
-            'js/startup.js'],
+            'js/dist/transpiled/app/**/*.js',
+            'js/dist/tmpl.min.js'],
           dest: 'js/dist/deps.min.js'
       },
       test: {
@@ -45,10 +56,11 @@ module.exports = function(grunt) {
             'js/vendor/jquery-mockjax/jquery.mockjax.js',
             'vendor/loader.js',
             'vendor/ember-resolver.js',
-            'js/dist/transpiled/**/*.js',
+            'js/dist/transpiled/app/**/*.js',
+            'js/dist/transpiled/tests/**/*.js',
             'js/dist/tmpl.min.js',
-            'js/tests/*.js',
-            'js/startup.js'],
+            'js/tests/helpers/integration_test_helper.js',
+            'js/tests/specs/**/*.js'],
           dest: 'js/dist/deps.min.js'
       }
     },
@@ -66,6 +78,6 @@ module.exports = function(grunt) {
     }
   });
 
-  grunt.task.registerTask('local', ['transpile', 'emberhandlebars', 'concat:dist']);
-  grunt.task.registerTask('test', ['transpile', 'emberhandlebars', 'concat:test', 'karma']);
+  grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
+  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'karma']);
 }

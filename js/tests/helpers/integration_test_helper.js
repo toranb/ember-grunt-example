@@ -1,8 +1,6 @@
 document.write('<div id="ember-testing-container"><div id="ember-testing"></div></div>');
 
-App.rootElement = '#ember-testing';
-App.setupForTesting();
-App.injectTestHelpers();
+startApp = require('js/tests/helpers/start-app')['default'];
 
 function missing(selector) {
     var error = "element " + selector + " found (should be missing)";
@@ -10,9 +8,11 @@ function missing(selector) {
     equal(element, 0, error);
 }
 
-function stubEndpointForHttpRequest(url, json) {
+function stubEndpointForHttpRequest(url, json, verb, status) {
     $.mockjax({
+        type: verb || "GET",
         url: url,
+        status: status || 200,
         dataType: 'json',
         responseText: json
     });
