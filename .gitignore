@@ -1,3 +1,4 @@
 node_modules/*
 js/vendor/*
 js/lib/*
+js/dist/*
