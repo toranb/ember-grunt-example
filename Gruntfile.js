@@ -42,10 +42,10 @@ module.exports = function(grunt) {
             'js/vendor/jquery/jquery.min.js',
             'js/vendor/handlebars/handlebars.js',
             'js/vendor/ember/ember.js',
+            'js/dist/tmpl.min.js',
             'vendor/loader.js',
             'vendor/ember-resolver.js',
-            'js/dist/transpiled/app/**/*.js',
-            'js/dist/tmpl.min.js'],
+            'js/dist/transpiled/app/**/*.js'],
           dest: 'js/dist/deps.min.js'
       },
       test: {
