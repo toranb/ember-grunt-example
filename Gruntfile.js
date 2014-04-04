@@ -54,13 +54,12 @@ module.exports = function(grunt) {
             'js/vendor/handlebars/handlebars.js',
             'js/vendor/ember/ember.js',
             'js/vendor/jquery-mockjax/jquery.mockjax.js',
+            'js/dist/tmpl.min.js',
             'vendor/loader.js',
             'vendor/ember-resolver.js',
             'js/dist/transpiled/app/**/*.js',
-            'js/dist/transpiled/tests/helpers/start-app.js',
-            'js/tests/integration/**/*.js',
-            'js/dist/transpiled/tests/unit/**/*.js',
-            'js/dist/tmpl.min.js',
+            'js/dist/transpiled/tests/**/*.js',
+            'vendor/integration-test-helper.js',
             'vendor/test-loader.js'],
           dest: 'js/dist/deps.min.js'
       }
