@@ -1,12 +1,10 @@
 {
   "dependencies": {
     "bower": "*",
-    "karma": "0.10",
+    "testem": "*",
     "grunt-cli": "*",
-    "karma-qunit": "*",
-    "grunt-karma": "0.7.1",
+    "grunt-contrib-testem": "*",
     "grunt-contrib-concat": "*",
-    "karma-qunit-special-blend": "*",
     "grunt-es6-module-transpiler": "*",
     "grunt-ember-template-compiler": "1.5.0"
   },

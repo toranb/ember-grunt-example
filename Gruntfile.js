@@ -1,13 +1,21 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-karma');
+  grunt.loadNpmTasks('grunt-contrib-testem');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
 
   grunt.initConfig({
-    karma: {
-      unit: {
-        configFile: 'karma.conf.js'
+    testem: {
+      basic: {
+        src: [
+          "js/dist/deps.min.js"
+        ],
+        options: {
+          parallel: 2,
+          framework: "qunit",
+          launch_in_dev: ["PhantomJS"],
+          launch_in_ci: ["PhantomJS"]
+        }
       }
     },
     transpile: {
@@ -79,5 +87,5 @@ module.exports = function(grunt) {
   });
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
-  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'karma']);
+  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:ci:basic']);
 }

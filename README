@@ -16,6 +16,3 @@ To run the javascript tests
     npm install
     export PATH="./node_modules/.bin:$PATH"
     grunt test
-
-
-Note: the test runner hangs at this time (waiting for an ES6 transpiler fix)
