@@ -8,7 +8,9 @@ module.exports = function(grunt) {
     testem: {
       basic: {
         src: [
-          "js/dist/deps.min.js"
+          "node_modules/qunit-special-blend/qunit-special-blend.js",
+          "js/dist/deps.min.js",
+          "node_modules/qunit-special-blend/run-qunit-special-blend.js"
         ],
         options: {
           parallel: 2,

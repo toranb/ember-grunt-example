@@ -3,6 +3,7 @@
     "bower": "*",
     "testem": "*",
     "grunt-cli": "*",
+    "qunit-special-blend": "*",
     "grunt-contrib-testem": "*",
     "grunt-contrib-concat": "*",
     "grunt-es6-module-transpiler": "*",
