@@ -3,6 +3,7 @@
     "bower": "*",
     "testem": "*",
     "grunt-cli": "*",
+    "phantomjs": "*",
     "qunit-special-blend": "*",
     "grunt-contrib-testem": "*",
     "grunt-contrib-concat": "*",
