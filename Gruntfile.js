@@ -69,7 +69,6 @@ module.exports = function(grunt) {
             'vendor/ember-resolver.js',
             'js/dist/transpiled/app/**/*.js',
             'js/dist/transpiled/tests/**/*.js',
-            'vendor/integration-test-helper.js',
             'vendor/test-loader.js'],
           dest: 'js/dist/deps.min.js'
       }
