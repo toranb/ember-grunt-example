@@ -3,6 +3,7 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
+  grunt.loadNpmTasks('grunt-contrib-connect');
 
   grunt.initConfig({
     testem: {
@@ -84,9 +85,19 @@ module.exports = function(grunt) {
             files: ['js/templates/*.handlebars'],
             dest: 'js/dist/tmpl.min.js'
         }
+    },
+    connect: {
+      server: {
+        options: {
+          port: 3000,
+          keepalive: true,
+          base: './'
+        }
+      }
     }
   });
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
   grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:ci:basic']);
+  grunt.task.registerTask("server", ['local', 'connect']);
 }
