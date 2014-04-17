@@ -5,8 +5,7 @@ To run the ember.js locally
 
     npm install
     export PATH="./node_modules/.bin:$PATH"
-    grunt local &
-    ./bin/server
+    grunt server
 
     visit http://localhost:3000 to see the running app
 
