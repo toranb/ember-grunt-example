@@ -9,7 +9,8 @@
     "grunt-contrib-concat": "*",
     "grunt-es6-module-transpiler": "*",
     "grunt-ember-template-compiler": "1.5.0",
-    "grunt-contrib-connect": "*"
+    "grunt-contrib-connect": "*",
+    "grunt-contrib-watch": "*"
   },
   "scripts": {
     "postinstall": "bower install"

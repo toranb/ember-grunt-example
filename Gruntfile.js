@@ -4,8 +4,18 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
   grunt.loadNpmTasks('grunt-contrib-connect');
+  grunt.loadNpmTasks('grunt-contrib-watch');
 
   grunt.initConfig({
+    watch: {
+      options: {
+        livereload: true
+      },
+      scripts: {
+        files: ['**/*.{js,hbs,handlebars,html}', '!js/dist/**/*'],
+        tasks: ["local"]
+      },
+    },
     testem: {
       basic: {
         src: [
@@ -90,7 +100,7 @@ module.exports = function(grunt) {
       server: {
         options: {
           port: 3000,
-          keepalive: true,
+          livereload: true,
           base: './'
         }
       }
@@ -99,5 +109,5 @@ module.exports = function(grunt) {
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
   grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:ci:basic']);
-  grunt.task.registerTask("server", ['local', 'connect']);
+  grunt.task.registerTask("server", ['connect:server', 'watch']);
 }
