@@ -9,10 +9,11 @@ module.exports = function(grunt) {
   grunt.initConfig({
     watch: {
       options: {
+        spawn: false,
         livereload: true
       },
       scripts: {
-        files: ['**/*.{js,hbs,handlebars,html}', '!js/dist/**/*'],
+        files: ['js/templates/**/*.handlebars', 'js/app/**/*.js'],
         tasks: ["local"]
       },
     },
@@ -109,5 +110,5 @@ module.exports = function(grunt) {
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
   grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:ci:basic']);
-  grunt.task.registerTask("server", ['connect:server', 'watch']);
+  grunt.task.registerTask("server", ['connect:server', 'local', 'watch']);
 }
