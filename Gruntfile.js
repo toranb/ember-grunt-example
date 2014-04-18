@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-contrib-testem');
+  grunt.loadNpmTasks('grunt-testem');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
@@ -18,18 +18,11 @@ module.exports = function(grunt) {
       },
     },
     testem: {
-      basic: {
-        src: [
-          "node_modules/qunit-special-blend/qunit-special-blend.js",
-          "js/dist/deps.min.js",
-          "node_modules/qunit-special-blend/run-qunit-special-blend.js"
-        ],
-        options: {
-          parallel: 2,
-          framework: "qunit",
-          launch_in_dev: ["PhantomJS"],
-          launch_in_ci: ["PhantomJS"]
-        }
+      options: {
+        launch_in_dev : ['PhantomJS']
+      },
+      main: {
+        src: ['testem.json']
       }
     },
     transpile: {
@@ -109,6 +102,6 @@ module.exports = function(grunt) {
   });
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
-  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:ci:basic']);
+  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:main']);
   grunt.task.registerTask("server", ['connect:server', 'local', 'watch']);
 }
