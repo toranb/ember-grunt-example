@@ -1,5 +1,5 @@
 module.exports = function(grunt) {
-  grunt.loadNpmTasks('grunt-testem');
+  grunt.loadNpmTasks('grunt-karma');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-es6-module-transpiler');
   grunt.loadNpmTasks('grunt-ember-template-compiler');
@@ -17,12 +17,9 @@ module.exports = function(grunt) {
         tasks: ["local"]
       },
     },
-    testem: {
-      options: {
-        launch_in_dev : ['PhantomJS']
-      },
-      main: {
-        src: ['testem.json']
+    karma: {
+      unit: {
+        configFile: "karma.conf.js"
       }
     },
     transpile: {
@@ -102,6 +99,6 @@ module.exports = function(grunt) {
   });
 
   grunt.task.registerTask('local', ['transpile:app', 'emberhandlebars', 'concat:dist']);
-  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'testem:main']);
+  grunt.task.registerTask('test', ['transpile:app', 'transpile:tests', 'emberhandlebars', 'concat:test', 'karma']);
   grunt.task.registerTask("server", ['connect:server', 'local', 'watch']);
 }

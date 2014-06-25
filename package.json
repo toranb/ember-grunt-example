@@ -1,7 +1,10 @@
 {
   "dependencies": {
     "bower": "*",
-    "testem": "*",
+    "karma-phantomjs-launcher": "*",
+    "karma-qunit": "*",
+    "karma": "*",
+    "grunt-karma": "*", 
     "grunt-cli": "*",
     "phantomjs": "*",
     "karma-qunit-special-blend": "*",
