@@ -1,4 +1,5 @@
 import Person from 'js/models/person';
+import PeopleController from 'js/controllers/people';
 
 test('fullName property returns both first and last', function() {
     var person = Person.create({firstName: 'toran', lastName: 'billups'});

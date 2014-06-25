@@ -4,7 +4,7 @@
     "testem": "*",
     "grunt-cli": "*",
     "phantomjs": "*",
-    "qunit-special-blend": "*",
+    "karma-qunit-special-blend": "*",
     "grunt-testem": "*",
     "grunt-contrib-concat": "*",
     "grunt-es6-module-transpiler": "*",
