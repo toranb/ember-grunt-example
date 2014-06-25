@@ -12,6 +12,6 @@ module.exports = function(karma) {
         browsers: ['PhantomJS'],
         singleRun: true,
         autoWatch: false,
-        frameworks: ['qunit', 'qunit-sb'],
+        frameworks: ['qunit', 'qunit-sb']
     });
 };
